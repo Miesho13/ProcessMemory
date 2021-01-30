@@ -72,6 +72,8 @@ namespace ProcessMemory
 
       DWORD getProcBaseAddr() const;
 
+      bool getGoodState() const;
+
       void showDebudInfo() const;
 
 

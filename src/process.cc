@@ -1,3 +1,7 @@
+/*
+  Process class implementation
+*/
+
 #include "../include/Process.hpp"
 
 /*** Process class constructor ***/
@@ -172,6 +176,11 @@ DWORD ProcessMemory::Process::getProcBaseAddr() const
   {
     return 0;
   }
+}
+
+bool ProcessMemory::Process::getGoodState() const
+{
+  return this->isGood;
 }
 
 void ProcessMemory::Process::showDebudInfo() const
