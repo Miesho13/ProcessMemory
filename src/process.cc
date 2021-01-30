@@ -1,6 +1,6 @@
 #include "../include/Process.hpp"
 
-/*** Process class process ***/
+/*** Process class constructor ***/
 
 ProcessMemory::Process::Process(LPCWSTR hPW, const wchar_t *PM)
 {

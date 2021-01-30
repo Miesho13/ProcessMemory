@@ -1,11 +1,17 @@
+/*
+  This header it's part of simple API to read and write process's
+  memory. Here is the class declaration. 
+
+*/
+
+
 #ifndef PROCESS_H_
 #define PROCESS_H_
 
 #include <windows.h>
 #include <iostream>
-#include <vector>
 #include <tlhelp32.h>
-#include <tchar.h>
+#include <vector>
 
 
 namespace ProcessMemory
@@ -20,6 +26,8 @@ namespace ProcessMemory
         OPEN_PROCESS_FAILED = 2
       };
 
+    // All error values will be added to
+    // this vector.
       std::vector<ERR> errorVector;
     
     // Value is handle to the window that has
@@ -34,11 +42,11 @@ namespace ProcessMemory
     // specified process
       HANDLE procHan;
     
-    // Process name
+    // Process's name
       std::wstring procName;
 
-    // Address where started
-    // process's memory
+    // Address where process's
+    // memory is start
       DWORD procBaseAddr;
 
     // is true when constructor and
