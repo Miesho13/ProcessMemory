@@ -55,7 +55,6 @@ ProcessMemory::Process::Process(LPCWSTR hPW, const wchar_t *PM)
       {
         if ( wcscmp(modEntry32W.szModule, PM) == 0)
         {
-          
           this->procBaseAddr = (DWORD)modEntry32W.modBaseAddr;
           this->procName = modEntry32W.szModule;
           
@@ -105,13 +104,12 @@ ProcessMemory::Process::Process(DWORD pd, const wchar_t *PM) :
           
           this->procBaseAddr = (DWORD)modEntry32W.modBaseAddr;
           this->procName = modEntry32W.szModule;
-          
+
           break;
         }
       }while ( Module32NextW(snapshot, &modEntry32W) );
       CloseHandle(snapshot);
     }
-
   }
   this->isGood = goodSate;
 }
@@ -142,7 +140,7 @@ HANDLE ProcessMemory::Process::getProcHan() const
   }
 }
 
-std::wstring ProcessMemory::Process::getProcName() const
+ProcessMemory::ProcessName ProcessMemory::Process::getProcName() const
 {
   if (this->isGood == true)
   {
@@ -192,7 +190,8 @@ void ProcessMemory::Process::showDebudInfo() const
     std::wcout << "Handler: " << getHandlerProcessWin() << '\n';
     std::wcout << "Proc Han: " << getProcHan() << '\n';
     std::wcout << "process ID: " << getpID() << '\n';
-    std::wcout << "proc base addres: " << getProcBaseAddr() << '\n';
+    std::wcout << "proc base addres: " << std::hex << getProcBaseAddr() << '\n';
+    std::wcout << std::dec;
   }
   else 
   {

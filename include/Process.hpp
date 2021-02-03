@@ -16,6 +16,9 @@
 
 namespace ProcessMemory
 {
+
+  typedef std::wstring ProcessName;
+
   class Process
   {
     private:
@@ -43,7 +46,7 @@ namespace ProcessMemory
       HANDLE procHan;
     
     // Process's name
-      std::wstring procName;
+      ProcessName procName;
 
     // Address where process's
     // memory is start
@@ -68,7 +71,7 @@ namespace ProcessMemory
 
       HANDLE getProcHan() const;
 
-      std::wstring getProcName() const;
+      ProcessName getProcName() const;
 
       DWORD getProcBaseAddr() const;
 
