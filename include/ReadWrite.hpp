@@ -8,39 +8,60 @@
 
 #include "Process.hpp"
 #include <vector>
+#include <algorithm>
 
 namespace ProcessMemory
 {
+
+  typedef std::vector<DWORD> Offsetvec;
+  typedef bool ReadyToUse;
+
   template<typename T>
   class ReadWrite
   {
     private:
-      Process prc;
+      Process & prc;
 
-      std::vector<int> offsetvector;
+      Offsetvec offsetvector;
 
-      unsigned long startAddres;
+      DWORD startAddres;
 
-      unsigned long currentAddres;
+      DWORD currentAddres;
       
+      ReadyToUse isReady;
+
+      T value;
+
     public:
     
     // Constructors
 
       ReadWrite(Process & p);
 
-      ReadWrite(Process & p, std::vector<unsigned long> off);
+      ReadWrite(Process & p, Offsetvec & off);
 
-      ReadWrite(Process & p,unsigned long startAddr, std::vector<unsigned long> off);
+      ReadWrite(Process & p, DWORD startAddres, Offsetvec & off);
     
     // method
-      void setOffset(std::vector<unsigned int> off);
+      void setOffset(Offsetvec off);
 
-      void setStartAddres(unsigned long stra);
+      void setStartAddres(DWORD stra);
 
-      T read() const;
+      T readWith();
 
-      void wirteTo(T value);
+      T readCurrentAddres();
+      
+      void wirteTo(T val);
+
+      void writeTo(DWORD where, T val);
+
+      Offsetvec getOffsetvector() const;
+
+      DWORD getStartAddres() const;
+
+      DWORD getCurrentAddres() const;
+
+      void showDebugInfo() const;
   };  
 
 
