@@ -185,20 +185,19 @@ void ProcessMemory::Process::showDebudInfo() const
 {
   if (isGood == true)
   {
-    std::wcout << "PROCESS IFNO: " << '\n';
-    std::wcout << "Proc Name: " << getProcName() << '\n';
-    std::wcout << "Handler: " << getHandlerProcessWin() << '\n';
-    std::wcout << "Proc Han: " << getProcHan() << '\n';
-    std::wcout << "process ID: " << getpID() << '\n';
-    std::wcout << "proc base addres: " << std::hex << getProcBaseAddr() << '\n';
-    std::wcout << std::dec;
+    std::wcout << "PROCCDEBUG: " << "Proc Name: " << getProcName() << '\n';
+    std::wcout << "PROCCDEBUG: " << "Handler: " << getHandlerProcessWin() << '\n';
+    std::wcout << "PROCCDEBUG: " << "Proc Han: " << getProcHan() << '\n';
+    std::wcout << "PROCCDEBUG: " << "process ID: " << getpID() << '\n';
+    std::wcout 
+      << "PROCCDEBUG: " << "proc base addres: " << std::hex 
+      << "0x" << getProcBaseAddr() << std::dec <<'\n';
   }
   else 
   {
-    std::wcout << "Number of ERROR: " << '\n';
     for (auto i : this->errorVector)
     {
-      std::cout << (int)i << '\n';
+      std::wcout << "ERROR NUMBER: " << (int)i << '\n';
     }
   }
 }
