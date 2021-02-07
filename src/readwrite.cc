@@ -48,7 +48,7 @@ void ProcessMemory::ReadWrite<T>::showDebugInfo() const
   std::wcout << std::hex; 
   std::wcout << "DEBUGINFO: " << "Start Addres:: " << getStartAddres() <<  '\n';
   std::wcout << "DEBUGINFO: " << "Current addres:: " << getCurrentAddres() <<  '\n';
-  std::wcout << "DEBUGINFO: -- Offset Vector = ";
+  std::wcout << "DEBUGINFO: Offset Vector = ";
 
   std::for_each
   (
