@@ -45,18 +45,34 @@ DWORD ProcessMemory::ReadWrite<T>::getCurrentAddres() const
 template<typename T>
 void ProcessMemory::ReadWrite<T>::showDebugInfo() const
 {
-  
+  std::wcout << std::hex; 
   std::wcout << "DEBUGINFO: " << "Start Addres:: " << getStartAddres() <<  '\n';
   std::wcout << "DEBUGINFO: " << "Current addres:: " << getCurrentAddres() <<  '\n';
   std::wcout << "DEBUGINFO: -- Offset Vector = ";
+
   std::for_each
   (
     std::begin(offsetvector),
     std::end(offsetvector),
     [](DWORD x)
     {
-      std::wcout << "[" << x << "], ";
+      std::wcout << "[0x" << x << "], ";
     }
   );
   std::wcout << '\n';
+
+  std::wcout << std::dec;
 }
+
+
+template class ProcessMemory::ReadWrite<int>;
+
+template class ProcessMemory::ReadWrite<double>;
+
+template class ProcessMemory::ReadWrite<float>;
+
+template class ProcessMemory::ReadWrite<std::string>;
+
+
+
+
