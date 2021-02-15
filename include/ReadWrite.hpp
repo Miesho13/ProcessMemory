@@ -16,7 +16,8 @@ namespace ProcessMemory
 {
 
   typedef std::vector<DWORD> Offsetvec;
-  typedef bool ReadyToUse;
+  typedef bool OffsetEgsistFlag;
+  typedef bool StartAddresEgsistFlag;
 
   template<typename T>
   class ReadWrite
@@ -27,13 +28,14 @@ namespace ProcessMemory
 
       Offsetvec offSetVector; // It's vectors' offsets to address we wanted 
 
+      OffsetEgsistFlag offFlag;
+
       DWORD startAddres; // Where start to go for interesing value
+
+      StartAddresEgsistFlag strAddrFlag;
 
       DWORD pointAddress; // Point to interesing addres
       
-      ReadyToUse isReady; // This flag says us everythink is ok to R/W to adress
-
-      T value; // 
 
     public:
     
@@ -44,34 +46,36 @@ namespace ProcessMemory
       ReadWrite(Process & p, Offsetvec & off);
 
       ReadWrite(Process & p, DWORD startAddres, Offsetvec & off);
-    //
+    
 
-    // method
-      static T readFrom(Process & p, DWORD from);
+    // Method:
 
-      static void writeTo(Process & p, DWORD where, T val);
+      // Some static: 
+        static T readFrom(Process & p, DWORD from);
 
-      void setPointAddres();
+        static void writeTo(Process & p, DWORD where, T val);
+
+      // Sets:
+        void setPointAddres(Offsetvec & off);
+
+        void setPointAddres(DWORD addres);
+        
+        void setStartAddres(DWORD stra);
       
-      void wirteTo(T val);
+      // Read Write to current pointing addres   
+        void wirteToPointAddres(T val);
 
-      T returnValue();
+        T readPointAddres();
 
-      void setOffset(Offsetvec & off);
+      // For debug ifno
+        Offsetvec getOffSetVector() const;
 
-      void setStartAddres(DWORD stra);
+        DWORD getStartAddres() const;
 
-      Offsetvec getOffSetVector() const;
+        DWORD getPointAddress() const;
 
-      DWORD getStartAddres() const;
-
-      DWORD getPointAddress() const;
-
-      void showDebugInfo() const;
-    //
+        void showDebugInfo() const;
   };  
-
-
 }
 
 #endif
