@@ -1,5 +1,6 @@
 /*
-
+  It's declaration of ReadWrite class. The class is used to read and write
+  the value of a process caught with Process method.
 */
 
 
@@ -7,6 +8,7 @@
 #define READWRITE_H_
 
 #include "Process.hpp"
+
 #include <vector>
 #include <algorithm>
 
@@ -20,48 +22,53 @@ namespace ProcessMemory
   class ReadWrite
   {
     private:
-      Process & prc;
+    // Variable: 
+      Process & prc; // It's ref to Process obj
 
-      Offsetvec offsetvector;
+      Offsetvec offSetVector; // It's vectors' offsets to address we wanted 
 
-      DWORD startAddres;
+      DWORD startAddres; // Where start to go for interesing value
 
-      DWORD currentAddres;
+      DWORD pointAddress; // Point to interesing addres
       
-      ReadyToUse isReady;
+      ReadyToUse isReady; // This flag says us everythink is ok to R/W to adress
 
-      T value;
+      T value; // 
 
     public:
     
     // Constructors
 
-      ReadWrite(Process & p);
+      ReadWrite(Process & p); 
 
       ReadWrite(Process & p, Offsetvec & off);
 
       ReadWrite(Process & p, DWORD startAddres, Offsetvec & off);
-    
+    //
+
     // method
-      void setOffset(Offsetvec off);
+      static T readFrom(Process & p, DWORD from);
 
-      void setStartAddres(DWORD stra);
+      static void writeTo(Process & p, DWORD where, T val);
 
-      T readWith();
-
-      T readCurrentAddres();
+      void setPointAddres();
       
       void wirteTo(T val);
 
-      void writeTo(DWORD where, T val);
+      T returnValue();
 
-      Offsetvec getOffsetvector() const;
+      void setOffset(Offsetvec & off);
+
+      void setStartAddres(DWORD stra);
+
+      Offsetvec getOffSetVector() const;
 
       DWORD getStartAddres() const;
 
-      DWORD getCurrentAddres() const;
+      DWORD getPointAddress() const;
 
       void showDebugInfo() const;
+    //
   };  
 
 
