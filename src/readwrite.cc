@@ -3,7 +3,7 @@
 template<typename T>
 ProcessMemory::ReadWrite<T>::ReadWrite(Process & p) :
   prc(p), offSetVector(0), startAddres(0), pointAddress(0), offFlag(false), 
-  strFlag(false) { }
+  strAddrFlag(false) { }
 
 
 
@@ -30,7 +30,7 @@ ProcessMemory::ReadWrite<T>::ReadWrite
   Process & p, 
   DWORD offstartAddres, 
   Offsetvec & off
-  ) :
+) :
   prc(p), offSetVector(off) 
 {
   // Checking if vector is no empty
@@ -165,7 +165,10 @@ void ProcessMemory::ReadWrite<T>::setPointAddres(Offsetvec & off)
 template<typename T>
 void ProcessMemory::ReadWrite<T>::setPointAddres(DWORD addr)
 {
-  pointAddress = addr;
+  if (addr >= 0)
+  {
+    pointAddress = addr;
+  }
 }
 
 
@@ -177,7 +180,7 @@ void ProcessMemory::ReadWrite<T>::setStartAddres(DWORD offsetToBaseAddres)
   startAddres = 0;
 
   // Checking if offstartAddres is lower then 0
-  if ( offstartAddres >= 0 )
+  if ( offsetToBaseAddres >= 0 )
   {
     strAddrFlag = true;
   }
