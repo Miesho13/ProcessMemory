@@ -4,7 +4,7 @@
 
 #include "../include/Process.hpp"
 
-/*** Process class constructor ***/
+
 
 ProcessMemory::Process::Process(LPCWSTR hPW, const wchar_t *PM)
 {
@@ -69,6 +69,8 @@ ProcessMemory::Process::Process(LPCWSTR hPW, const wchar_t *PM)
   this->isGood = goodSate;
 }
 
+
+
 ProcessMemory::Process::Process(DWORD pd, const wchar_t *PM) :
   handlerProcessWin(0), pID(pd)
 {
@@ -114,7 +116,7 @@ ProcessMemory::Process::Process(DWORD pd, const wchar_t *PM) :
   this->isGood = goodSate;
 }
 
-// -------------------------------------------------------------------------------------
+
 
 DWORD ProcessMemory::Process::getpID() const
 {
@@ -128,6 +130,8 @@ DWORD ProcessMemory::Process::getpID() const
   }
 }
 
+
+
 HANDLE ProcessMemory::Process::getProcHan() const
 {
   if (this->isGood == true)
@@ -139,6 +143,8 @@ HANDLE ProcessMemory::Process::getProcHan() const
     return 0;
   }
 }
+
+
 
 ProcessMemory::ProcessName ProcessMemory::Process::getProcName() const
 {
@@ -152,6 +158,8 @@ ProcessMemory::ProcessName ProcessMemory::Process::getProcName() const
   }
 }
 
+
+
 HWND ProcessMemory::Process::getHandlerProcessWin() const
 {
   if (this->isGood == true)
@@ -163,6 +171,8 @@ HWND ProcessMemory::Process::getHandlerProcessWin() const
     return 0;
   }
 }
+
+
 
 DWORD ProcessMemory::Process::getProcBaseAddr() const
 {
@@ -176,10 +186,14 @@ DWORD ProcessMemory::Process::getProcBaseAddr() const
   }
 }
 
+
+
 bool ProcessMemory::Process::getGoodState() const
 {
   return this->isGood;
 }
+
+
 
 void ProcessMemory::Process::showDebudInfo() const
 {
