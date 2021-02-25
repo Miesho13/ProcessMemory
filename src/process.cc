@@ -13,7 +13,7 @@ ProcessMemory::Process::Process(LPCWSTR hPW, const wchar_t *PM)
   // It will be assigned to is Good at the end of the constructor
   bool goodSate = true;
 
-  //
+  
   // Finde window with WINAPI
   this->handlerProcessWin = FindWindowW(NULL, hPW); 
   if ( this->handlerProcessWin == NULL )
@@ -22,12 +22,12 @@ ProcessMemory::Process::Process(LPCWSTR hPW, const wchar_t *PM)
     goodSate = false;
   }
 
-  // 
+  
   // Get process ID
   this->pID = 0;
   GetWindowThreadProcessId(this->handlerProcessWin, &pID);
 
-  // 
+  
   // Open precess
   this->procHan = NULL;
   this->procHan = OpenProcess(PROCESS_ALL_ACCESS, FALSE, this->pID);
@@ -37,7 +37,7 @@ ProcessMemory::Process::Process(LPCWSTR hPW, const wchar_t *PM)
     goodSate = false;
   }
   
-  //
+  
   // Alghoritm to finde where process memory started
   DWORD procBaseAddr = 0;
 
@@ -85,7 +85,7 @@ ProcessMemory::Process::Process(DWORD pd, const wchar_t *PM) :
     goodSate = false;
   }
 
-  //
+  
   // Alghoritm to finde where process memory started
   DWORD procBaseAddr = 0;
 
