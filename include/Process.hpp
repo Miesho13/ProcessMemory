@@ -29,9 +29,8 @@ namespace ProcessMemory
         OPEN_PROCESS_FAILED = 2
       };
 
-    // All error values will be added to
-    // this vector.
-      std::vector<ERR> errorVector;
+
+    std::vector<ERR> errorVector;
     
     // Value is handle to the window that has
     // the specified class name and window name.

@@ -11,7 +11,6 @@ template<typename T>
 ProcessMemory::ReadWrite<T>::ReadWrite(Process & p, Offsetvec & off) :
   prc(p), offSetVector(off), startAddres(0), pointAddress(0) 
 {
-  // Checking if vector is no empty
   if ( offSetVector.size() != 0 )
   {
     offFlag = true;
@@ -33,7 +32,6 @@ ProcessMemory::ReadWrite<T>::ReadWrite
 ) :
   prc(p), offSetVector(off) 
 {
-  // Checking if vector is no empty
   if ( offSetVector.size() != 0 )
   {
     offFlag = true;
@@ -43,7 +41,6 @@ ProcessMemory::ReadWrite<T>::ReadWrite
     offFlag = false;
   }
 
-  // Checking if offstartAddres is not equal 0
   if ( offstartAddres >= 0 )
   {
     strAddrFlag = true;
@@ -53,7 +50,6 @@ ProcessMemory::ReadWrite<T>::ReadWrite
     strAddrFlag = false;
   }
 
-  // Where we want start reading/writing
   startAddres = 0;
   if (strAddrFlag == true)
   {
@@ -127,11 +123,10 @@ void ProcessMemory::ReadWrite<T>::writeTo(Process & p, DWORD where, T val)
 template<typename T>
 void ProcessMemory::ReadWrite<T>::setPointAddres(Offsetvec & off)
 {
-  // Clear current vector
+
   offSetVector.clear();
   offSetVector = off;
 
-  // Checking if vector is no empty
   if (offSetVector.size() != 0)
   {
     offFlag = true;
@@ -176,10 +171,8 @@ void ProcessMemory::ReadWrite<T>::setPointAddres(DWORD addr)
 template<typename T>
 void ProcessMemory::ReadWrite<T>::setStartAddres(DWORD offsetToBaseAddres)
 {
-  // Where we want start reading/writing
   startAddres = 0;
 
-  // Checking if offstartAddres is lower then 0
   if ( offsetToBaseAddres >= 0 )
   {
     strAddrFlag = true;

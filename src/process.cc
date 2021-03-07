@@ -23,12 +23,10 @@ ProcessMemory::Process::Process(LPCWSTR hPW, const wchar_t *PM)
   }
 
   
-  // Get process ID
   this->pID = 0;
   GetWindowThreadProcessId(this->handlerProcessWin, &pID);
 
   
-  // Open precess
   this->procHan = NULL;
   this->procHan = OpenProcess(PROCESS_ALL_ACCESS, FALSE, this->pID);
   if ( this->procHan == INVALID_HANDLE_VALUE || this->procHan == NULL )
@@ -43,6 +41,7 @@ ProcessMemory::Process::Process(LPCWSTR hPW, const wchar_t *PM)
 
   if ( goodSate == true )
   {
+    // Alghoritm finde where process memory started
     // Use tlhelp32 API
     HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, this->pID);
     MODULEENTRY32W modEntry32W = { 0 };
@@ -86,11 +85,12 @@ ProcessMemory::Process::Process(DWORD pd, const wchar_t *PM) :
   }
 
   
-  // Alghoritm to finde where process memory started
+  
   DWORD procBaseAddr = 0;
 
   if ( goodSate == true )
   {
+    // Alghoritm to finde where process memory started
     // Use tlhelp32 API
     HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, this->pID);
     MODULEENTRY32W modEntry32W = { 0 };
@@ -98,7 +98,6 @@ ProcessMemory::Process::Process(DWORD pd, const wchar_t *PM) :
 
     if ( Module32FirstW(snapshot, &modEntry32W) )
     {
-      // List search and hunks of the process
       do 
       {
         if ( wcscmp(modEntry32W.szModule, PM) == 0)

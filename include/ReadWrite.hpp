@@ -23,58 +23,56 @@ namespace ProcessMemory
   class ReadWrite
   {
     private:
-    // Variable: 
-      Process & prc; // It's ref to Process obj
+      Process & prc; 
 
-      Offsetvec offSetVector; // It's vectors' offsets to address we wanted 
+      Offsetvec offSetVector; 
 
       OffsetEgsistFlag offFlag;
 
-      DWORD startAddres; // Where start to go for interesing value
-
+      DWORD startAddres; 
       StartAddresEgsistFlag strAddrFlag;
 
-      DWORD pointAddress; // Point to interesing addres
+      DWORD pointAddress; 
       
 
     public:
     
     // Constructors
 
-      ReadWrite(Process & p); 
+    ReadWrite(Process & p); 
 
-      ReadWrite(Process & p, Offsetvec & off);
+    ReadWrite(Process & p, Offsetvec & off);
 
-      ReadWrite(Process & p, DWORD startAddres, Offsetvec & off);
+    ReadWrite(Process & p, DWORD startAddres, Offsetvec & off);
     
 
     // Method:
 
-      // Some static: 
-        static T readFrom(Process & p, DWORD from);
-
-        static void writeTo(Process & p, DWORD where, T val);
-
-      // Sets:
-        void setPointAddres(Offsetvec & off);
-
-        void setPointAddres(DWORD addres);
-        
-        void setStartAddres(DWORD stra);
       
-      // Read Write to current pointing addres   
-        void wirteToPointAddres(T val);
+    static T readFrom(Process & p, DWORD from);
 
-        T readPointAddres();
+    static void writeTo(Process & p, DWORD where, T val);
 
-      // For debug ifno
-        Offsetvec getOffSetVector() const;
+      
+    void setPointAddres(Offsetvec & off);
 
-        DWORD getStartAddres() const;
+    void setPointAddres(DWORD addres);
+        
+    void setStartAddres(DWORD stra);
+      
+       
+    void wirteToPointAddres(T val);
 
-        DWORD getPointAddress() const;
+    T readPointAddres();
 
-        void showDebugInfo() const;
+
+    Offsetvec getOffSetVector() const;
+
+    DWORD getStartAddres() const;
+
+    DWORD getPointAddress() const;
+
+    void showDebugInfo() const;
   };  
 }
 
